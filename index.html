@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicle Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: #f4f4f9;
+    }
+    h1 {
+      color: #333;
+    }
+    .vehicle-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    button.car { background-color: #4caf50; color: white; }
+    button.bus { background-color: #2196f3; color: white; }
+    button.truck { background-color: #ff5722; color: white; }
+    button.motorcycle { background-color: #9c27b0; color: white; }
+    button.reset { background-color: #777; color: white; }
+    .counts {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Manual Vehicle Tracker</h1>
+  <div class="vehicle-buttons">
+    <button class="car" onclick="incrementCount('car')">Car</button>
+    <button class="bus" onclick="incrementCount('bus')">Bus</button>
+    <button class="truck" onclick="incrementCount('truck')">Truck</button>
+    <button class="motorcycle" onclick="incrementCount('motorcycle')">Motorcycle</button>
+    <button class="reset" onclick="resetCounts()">Reset</button>
+  </div>
+  <div class="counts">
+    <p id="car-count">Cars: 0</p>
+    <p id="bus-count">Buses: 0</p>
+    <p id="truck-count">Trucks: 0</p>
+    <p id="motorcycle-count">Motorcycles: 0</p>
+  </div>
+  <script>
+    // Initialize counts
+    let vehicleCounts = {
+      car: 0,
+      bus: 0,
+      truck: 0,
+      motorcycle: 0
+    };
+
+    // Increment count for a specific vehicle type
+    function incrementCount(vehicleType) {
+      vehicleCounts[vehicleType]++;
+      updateCounts();
+    }
+
+    // Update the displayed counts
+    function updateCounts() {
+      document.getElementById('car-count').textContent = `Cars: ${vehicleCounts.car}`;
+      document.getElementById('bus-count').textContent = `Buses: ${vehicleCounts.bus}`;
+      document.getElementById('truck-count').textContent = `Trucks: ${vehicleCounts.truck}`;
+      document.getElementById('motorcycle-count').textContent = `Motorcycles: ${vehicleCounts.motorcycle}`;
+    }
+
+    // Reset all counts
+    function resetCounts() {
+      vehicleCounts = { car: 0, bus: 0, truck: 0, motorcycle: 0 };
+      updateCounts();
+    }
+  </script>
+</body>
+</html>
